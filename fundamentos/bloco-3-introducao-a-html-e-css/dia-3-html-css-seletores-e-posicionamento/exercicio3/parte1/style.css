@@ -1,0 +1,11 @@
+h1, p {
+    text-align: center;
+}
+ol {
+    list-style-position: inside;
+    
+}
+li:hover {
+    background-color: black;
+    color: white;
+}
