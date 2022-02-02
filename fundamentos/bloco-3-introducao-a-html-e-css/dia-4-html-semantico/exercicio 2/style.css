@@ -1,0 +1,57 @@
+body {    
+    background-color: turquoise;
+    text-align: center;
+}
+header {
+    background-color: chartreuse;
+    width: 700px;
+    margin: auto;
+}
+
+.article{
+    background-color: pink;    
+    width: 1300px;
+    margin: auto;
+}
+.description{
+    text-align: center;
+    background-color: teal;
+    width: 1000px;
+    margin: auto;
+    
+}
+.article2 {
+    background-color: white;
+
+}
+nav {
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+nav li{
+    display: inline-block;
+    width: 300px;
+
+}
+a{
+    color: inherit;
+}
+
+.vision, .eggs, .type, .shot, .coast  {
+
+    background-color: yellow;
+    color: blue;
+    width:500px;   
+    display: inline-block;
+    
+    vertical-align: start;
+
+    
+
+    
+}
+
+.vision, .eggs {
+    
+}
