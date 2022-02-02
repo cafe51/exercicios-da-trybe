@@ -22,3 +22,9 @@ li {
 li em {
     font-weight: bold;
 }
+.linguagens li:nth-last-of-type(n+3){
+    color: blue;
+}
+.linguagens li span {
+    background-color: pink;
+}
