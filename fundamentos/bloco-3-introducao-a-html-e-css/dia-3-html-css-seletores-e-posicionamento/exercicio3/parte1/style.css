@@ -1,8 +1,9 @@
 h1, p {
     text-align: center;
 }
-ol {
+ol, ul {
     list-style-position: inside;
+    list-style: none
     
 }
 li:hover {
