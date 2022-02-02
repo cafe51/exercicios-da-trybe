@@ -24,7 +24,26 @@ div:nth-of-type(5) {
     color: white;
     background-color: black;
 }
-h3 {
+div:nth-child(3) {
     text-align: center;
     text-decoration: underline;
+    font-style: italic;
+}
+div:nth-child(4) {
+    text-align: center;
+    text-decoration: underline;
+}
+div:nth-child(5) {
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+div:nth-child(6) {
+    text-align: center;
+    text-decoration: underline;
+}
+div:nth-child(7) {
+    text-align: center;
+    font-style: italic;
+
 }
