@@ -28,3 +28,43 @@ li em {
 .linguagens li span {
     background-color: pink;
 }
+.aplicações a{
+    color: inherit;
+}
+.aplicações li:hover{
+    font-weight: bold;
+}
+.aplicações li:hover:nth-last-of-type(1){
+    color: orange;
+}
+.aplicações li:hover:nth-last-of-type(2){
+    color: green;
+}
+.aplicações li:hover:nth-last-of-type(3){
+    color: black;
+}
+.aplicações li:hover:nth-last-of-type(4){
+    color: yellow;
+}
+.aplicações li:hover:nth-last-of-type(5){
+    color: green;
+}
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
