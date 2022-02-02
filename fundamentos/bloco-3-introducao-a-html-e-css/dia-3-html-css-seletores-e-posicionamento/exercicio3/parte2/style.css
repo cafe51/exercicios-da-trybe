@@ -22,3 +22,7 @@ div:nth-of-type(5) {
     color: white;
     background-color: black;
 }
+h3 {
+    text-align: center;
+    text-decoration: underline;
+}
