@@ -21,6 +21,10 @@ console.log(menuServices);
 
 
 let menu2 = ['Home', 'Serviços', 'Portfólio', 'Links'];
+console.log(menu2.indexOf('Portfólio'));
+
+// Usando o for
+
 let contador = []
 
 for (let index2 = 0; menu2[index2] != 'Portfólio'; index2 += 1){
