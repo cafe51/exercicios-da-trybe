@@ -10,7 +10,6 @@ function achadorDeNumeroMenor(a){
             if (a[i] <= a[i2]){
                 contadorAcertos.push('x');
             }
-                 
         }
         if (contadorAcertos.length - 1 === a.length){
             return a[i];
@@ -39,7 +38,6 @@ function achadorDeNumeroMaior(a){
             if (a[i] >= a[i2]){
                 contadorAcertos.push('x');
             }
-                 
         }
         if (contadorAcertos.length - 1 === a.length){
             return a[i];
