@@ -3,9 +3,6 @@
 //1. Ordene o array numbers em ordem crescente e imprima seus valores
 let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
 
-
-
-
 function achadorDeNumeroMenor(a){
     let contadorAcertos = ['x'];
     for(let i = 0; i < a.length; i += 1){
@@ -32,10 +29,8 @@ function ordenadorCrescente(array){
 return arrayOrdenado;
 }
 
-
-
-
 //2. Ordene o array numbers em ordem decrescente e imprima seus valores;
+
 numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
 function achadorDeNumeroMaior(a){
     let contadorAcertos = ['x'];
@@ -66,8 +61,8 @@ return arrayOrdenado;
 console.log(ordenadorDecrescente(numbers))
 
 // Usando bubble sort
-
 //1. Ordene o array numbers em ordem crescente e imprima seus valores
+
 numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
 function bubbleSort(array2){
     for (let index = 1; index < array2.length; index += 1) {
@@ -83,7 +78,9 @@ return array2
 }
 console.log(bubbleSort(numbers));
 
+// Usando bubble sort
 //2. Ordene o array numbers em ordem decrescente e imprima seus valores;
+
 numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
 function bubbleSort2(array3){
     for (let index = 1; index < array3.length; index += 1) {
