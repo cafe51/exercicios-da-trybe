@@ -91,5 +91,6 @@ function bubbleSort(array3){
 return array3
 }
 
-console.log('O menor número primo entre 0 e', 50, 'é', bubbleSort(primos(50))[0])
+// console.log('O maior número primo entre 0 e', 50, 'é', bubbleSort(primos(50))[0])
+console.log('O maior número primo entre 0 e', 50, 'é', bubbleSort(primos(50))[0])
  
