@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(213, 247, 255);
+    color: rgb(25, 77, 107);
+}
+.container{
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+header {
+    background-color: rgb(220, 247, 253);
+    border-radius: 20px;
+}
+
+section {
+    background-color:rgb(224, 247, 252);
+    border-radius: 20px;
+}
+.form-check-input{
+    margin-bottom: 10px;
+
+}
+
+.form-check-label {
+    margin-bottom: 10px;
+    border-radius: 20px;
+
+}
+
+.destino {
+    display: inline-flex;
+    border-radius: 20px;
+}
