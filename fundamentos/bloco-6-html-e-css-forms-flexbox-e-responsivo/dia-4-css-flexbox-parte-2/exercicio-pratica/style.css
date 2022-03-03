@@ -24,8 +24,6 @@
   .menu-container {
     display: flex;
     width: 100%;
-    
-    
   }
   
   .menu-container ul {
@@ -37,12 +35,64 @@
   
   .menu-container li {
     display: flex;
-    
-    
-    
     color: white;
     font-weight: 500;
     font-size: 1.3rem;
     list-style: none;
     margin-right: 10px;
 }
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .movie-container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    flex-grow: 10;
+  }
+  
+  .movie-container h2 {
+    margin: 40px 0;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .card-container div {
+    align-items: center;
+    background-color: #5C687C;
+    border: black solid 1px;
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    margin: 10px;
+    width: 16%;
+    flex-grow: 1;
+  }
+  
+  .aside-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border: 1px solid black;
+    width: 350px;
+    align-self: center;
+    flex-grow: 1;
+  }
+  
+  .aside-container h3, h4 {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .aside-container p {
+    margin: 10px 0;
+    text-align: justify;
+  }
