@@ -12,40 +12,37 @@
   .header-container {
     background-color: #5C687C;
     display: flex;
-    border: 2px yellow solid;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
   }
   
   .logo-container {
     display: flex;
     justify-content: center;
     width: 268px;
-    background-color: blue;
+    order: -1;
   }
 
-  .logo-container img{
-    align-self: flex-start;
-    
-    background-color: red
-  }
-  
   .menu-container {
     display: flex;
-    background-color: yellowgreen;
+    width: 100%;
+    
+    
   }
   
   .menu-container ul {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
     width: 100%;
-    
+    justify-content: space-around;
   }
   
   .menu-container li {
+    display: flex;
+    
+    
+    
     color: white;
     font-weight: 500;
     font-size: 1.3rem;
     list-style: none;
     margin-right: 10px;
-  }
+}
