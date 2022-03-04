@@ -54,6 +54,10 @@ nav ul {
       padding-right: 50px;
 }
 
+#aside h2{
+    text-align: center;
+}
+
 .aside-two {
     font-size: 15px;
 }
@@ -75,7 +79,7 @@ nav ul {
 
 article {
     font-size: 20px;
-    margin-left: 12%;
+    margin-left: 70px;
     padding-top: 10px;
     z-index: 0;
     position: static;
@@ -109,8 +113,17 @@ footer {
     }
 
     article {
-        margin-left: 5%;
         margin-top: 12%;
         margin-right: 5%;
     }
+}
+
+@media screen and (min-width: 1201px) {
+    .container {
+        margin-top: -8%;
+    }
+
+    #aside {
+        margin-left: 3%;
+  }
 }
