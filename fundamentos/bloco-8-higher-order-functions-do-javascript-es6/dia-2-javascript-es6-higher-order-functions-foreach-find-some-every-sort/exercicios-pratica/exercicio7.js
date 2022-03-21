@@ -64,3 +64,16 @@ const books = [
 ];
 
 // Adicione o código do exercício aqui:
+
+const expectedResult = false;
+
+function authorUnique() {
+  // escreva seu código aqui
+  let array = [];
+  books.forEach((element) => array.push(element.author.birthYear));
+  return array.every((element, index) => array[index] !== array[index + 1])
+}
+
+
+
+console.log(authorUnique())
