@@ -74,3 +74,5 @@ const expectedResult = [
 function oldBooks() {
   // escreva seu código aqui
 }
+
+console.log()
