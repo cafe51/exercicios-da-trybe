@@ -70,6 +70,10 @@ const expectedResult = 'O Senhor dos Anéis';
 
 function authorWith3DotsOnName() {
   // escreva seu código aqui
+  const livro = books.find((element) => element.author.name.split('.').length >= 4);
+  return livro.name
 }
 
-console.log()
+console.log(authorWith3DotsOnName())
+
+
