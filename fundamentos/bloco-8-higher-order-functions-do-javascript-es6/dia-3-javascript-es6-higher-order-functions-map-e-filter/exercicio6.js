@@ -73,6 +73,9 @@ const expectedResult = [
 
 function oldBooks() {
   // escreva seu código aqui
+  return books.
+  filter((element) => 2022 - element.releaseYear > 60)
+  .map((element) => element = element.name)
 }
 
-console.log()
+console.log(oldBooks())
