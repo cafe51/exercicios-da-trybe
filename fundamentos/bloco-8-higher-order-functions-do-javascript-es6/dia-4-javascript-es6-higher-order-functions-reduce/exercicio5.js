@@ -7,8 +7,15 @@ const names = [
   'Abeladerco', 'Adieidy', 'Alarucha',
 ];
 
-function containsA() {
+function containsA(letra) {
   // escreva seu código aqui
+  return names
+  .reduce((acc, element) => acc + element)
+  .toLowerCase()
+  .split('')
+  .reduce((acc, element) => element === letra ? acc + element : acc)
+  .length;
 }
 
-console.log()
+console.log(containsA('a'))
+
