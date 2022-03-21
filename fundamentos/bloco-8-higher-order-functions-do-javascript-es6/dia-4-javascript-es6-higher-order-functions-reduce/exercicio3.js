@@ -73,6 +73,4 @@ function averageAge() {
 }
 
 
-
-
 console.log()
