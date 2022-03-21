@@ -92,4 +92,9 @@ const expectedResult = [
   
   function oldBooksOrdered() {
     // escreva seu código aqui
+    return books
+    .filter((element) => 2022 - element.releaseYear > 60)
+    .sort((a, b) => a.releaseYear - b.releaseYear) 
   }
+
+  console.log(oldBooksOrdered());
