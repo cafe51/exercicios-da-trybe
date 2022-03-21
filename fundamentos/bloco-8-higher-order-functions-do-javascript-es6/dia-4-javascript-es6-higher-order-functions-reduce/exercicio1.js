@@ -8,6 +8,9 @@ const arrays = [
 
 function flatten() {
   // escreva seu código aqui
+	return arrays.reduce((result, element) => {
+		return result.concat(element)
+	})
 }
 
-console.log()
+console.log(flatten())
