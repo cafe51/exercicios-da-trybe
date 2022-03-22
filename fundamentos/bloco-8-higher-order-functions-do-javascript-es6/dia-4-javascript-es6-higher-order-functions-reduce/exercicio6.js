@@ -3,8 +3,17 @@
 const students = ['Pedro Henrique', 'Miguel', 'Maria Clara'];
 const grades = [[9, 8, 10, 7, 5], [10, 9, 9, 10, 8], [10, 7, 10, 8, 9]];
 
+
 function studentAverage() {
   // escreva seu código aqui
+  const obj = students.map((element, index) => {
+    const soma = (acc, element) => acc + element;
+    const notaTotal = grades[index].reduce(soma);
+    const media = notaTotal / grades[index].length;
+    return {
+      name: element, avarage: media}
+    });
+  return obj;
 }
 
 const expected = [
@@ -14,4 +23,4 @@ const expected = [
 ];
 
 
-console.log()
+console.log(studentAverage())
