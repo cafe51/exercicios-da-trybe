@@ -7,8 +7,7 @@ const myList = [1, 2, 3];
 // escreva swap abaixo
 
 
-
-
+const troca = ([a, b, c]) => [c, b, a]; 
 
 
 
