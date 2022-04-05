@@ -37,7 +37,7 @@ const mensagem = (erro, result) => {
 	} else console.log(erro)
 }
 
-getPokemonDetails('Bulbaasaur', mensagem)
+// getPokemonDetails('Bulbaasaur', mensagem)
 
 module.exports = {
   getPokemonDetails,
