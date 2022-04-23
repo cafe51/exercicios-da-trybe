@@ -1,17 +1,35 @@
 import React from 'react'
 import './App.css';
+import Input from './Input.jsx'
+import Texto from './Texto';
 
 class Form extends React.Component {
   constructor() {
     super()
     this.handleChange = this.handleChange.bind(this)
+    this.handleError = this.handleError.bind(this)
     this.state = {
       name: '',
       email: '',
       comentario: '',
       preferencia: '',
       fixa: 'false',
+      errado: ''
     }
+  }
+
+  handleError() {
+    const {name, email, comentario} = this.state
+    const erros = [
+      comentario.length > 50,
+      name.length < 1,
+      email.length < 1,
+      !email.includes('@')
+    ];
+    const verify = erros.some((erro) => erro === true)
+    this.setState({
+      errado: verify,
+    })
   }
 
   handleChange({target}) {
@@ -19,48 +37,38 @@ class Form extends React.Component {
     const v = target.type === 'checkbox'? checked : value
     this.setState({
       [name]: v,
-    })
-    // console.log(event.target.value)
+    }, () => {this.handleError()});
   }
+
 
   render() {
     // const {name, email, comentario, preferencia, fixa} = this.state
+    const {comentario} = this.state;
     return (
       <div className="formbox">
         <form className="formulario" >
           <fieldset>
             <legend>Usuário</legend>
-            <label>
-              Nome:
-              <input 
-              name='name'
-              type="text" 
-              // value={name} 
-              onChange={this.handleChange}
-              ></input>
-            </label>
-
-            <label>
-              Email:
-              <input 
-              name='email' 
-              type="text" 
-              // value={email}
-              onChange={this.handleChange}
-              ></input>
-            </label>
+            <Input 
+            name={'name'} 
+            titulo={'Nome'}
+            callback={this.handleChange}
+            />
+            <Input 
+            name={'email'} 
+            titulo={'Email'}
+            callback={this.handleChange}
+            />
           </fieldset>
         
           <fieldset>
             <legend>Opções</legend>
-              <label>
-              Comentário:
-              <textarea 
-              name='comentario' 
-              // value={comentario}
-              onChange={this.handleChange}
-              ></textarea>
-            </label>
+            <Texto 
+            name={'comentario'} 
+            titulo={'Comentário'}
+            callback={this.handleChange}
+            erro={comentario}
+            />
 
             <label >
               Preferência

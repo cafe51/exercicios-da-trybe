@@ -66,3 +66,8 @@ input, select, textarea {
   display: flex;
   align-self: center;
 }
+
+#pequeno {
+  font-size: 15px;
+  color: red;
+}
