@@ -60,7 +60,7 @@ label, .formulario {
   flex-direction: column;
 }
 
-input, select {
+input, select, textarea {
   width: 50%;
   height: 25px;
   display: flex;
