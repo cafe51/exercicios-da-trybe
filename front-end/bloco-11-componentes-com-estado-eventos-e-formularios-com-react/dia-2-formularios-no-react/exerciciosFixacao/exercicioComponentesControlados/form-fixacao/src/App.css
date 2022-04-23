@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+.formbox {
+  background-color: #282c34;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.formulario {
+  color: white;
+  font-size: 25px;
+  justify-content: space-around;
+  width: 50%;
+  height: 100%;
+  
+}
+
+label, .formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input, select {
+  width: 50%;
+  height: 25px;
+  display: flex;
+  align-self: center;
+}
