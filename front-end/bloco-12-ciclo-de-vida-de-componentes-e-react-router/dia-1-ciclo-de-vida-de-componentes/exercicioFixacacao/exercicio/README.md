@@ -1,70 +1,163 @@
-# Getting Started with Create React App
+# Para fixar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Faça um fork do repositório a seguir para treinar os momentos de cada método do React lifecycle: repositório de exercícios React lifecycle e siga as instruções abaixo. Se você tiver dúvidas sobre como se faz um fork de um repositório, há um tutorial na master do repositório de exercícios.
+Você receberá trechos do código de uma aplicação e deverá encaixar e adaptar esse código de acordo com o método correspondente. Para isso você receberá dicas sobre qual é o método responsável pela execução do código, e qual o componente que precisará desse código. Alinhamentos feitos? Ah! Entender o código inteiro da aplicação é um bônus! Se você conseguir fazê-la rodar, ainda que não ententa o código completamente, o exercício está feito! Beleza? Let's code!
 
-## Available Scripts
+### Dentro da master:
 
-In the project directory, you can run:
+```bash
+cd lifecycleapp
+npm install
+npm start
+```
+### src/App.js
+O método que você procura é o primeiro método a ser executado. Ele é executado uma única vez quando o componente é inicializado e guarda os estados iniciais do componente. Recebe props como argumento e é onde conectamos as funções ao componente (bind).
 
-### `npm start`
+```bash
+super();
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+this.state = {
+  showProfile: true,
+};
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+this.changeProfile = this.changeProfile.bind(this);
+```
+### src/App.js
+Não use o setState dentro do render(), isso pode ocasionar loops infinitos, porque o metódo render é chamado quando o state é atualizado, então ao colocar o setState dentro do render, ele irá atualizar o state e chamar o render, atualizar o state novamente e chamar o render e por aí vai, o metódo render deve ser puro. Uma função pura é aquela que ela não pode ser alterada, independente do que entra nela ela deve permanecer igual. Se você quer inicializar váriaveis assim que a página for montada, utilize o componentDidMount()
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+const { showProfile } = this.state;
+return (
+  <div className="gitNetwork d-flex flex-column justify-content-center">
+    { showProfile ? <Profile /> : null }
+    <div className="central d-flex justify-content-center">
+      <button
+        className="btn btn-dark align-self-center"
+        type="button"
+        onClick={ this.changeProfile }
+      >
+        Mostrar / Ocultar Perfil
+      </button>
+    </div>
+    <Connections />
+  </div>
+);
+```
+### src/components/Profile.js
+O método que você busca é executado assim que o componente for montado e estiver pronto na tela. Caso precise fazer uma requisição a alguma API, esse método é um bom lugar para guardar tal requisição. O React permite o uso do setState nesse método.
 
-### `npm run build`
+```bash
+const myUser = ''; //Preencha myUser com o seu user do GitHub.
+try {
+  const url = `https://api.github.com/users/${myUser}`;
+  const response = await fetch(url)
+  const dataJson = await response.json()
+  this.setState({ api: dataJson})
+} catch (error) {
+  console.log(error)
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### src/components/Connections.js
+Método executado sempre que ocorrer alguma atualização. Comumente utilizado para atualizar o DOM de acordo com as alterações de estado ou props, e é um método que também pode ser utilizado para requisições à API. Recebe como parâmetros prevProps, prevState e snapshot, sendo os mais utilizados os dois primeiros.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+const { list } = this.state;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+if (prevState.list.length < list.length) {
+this.changeToBlue();
+// Ao adicionar um contato, a div ficará azul.
+} else if (prevState.list.length > list.length) {
+this.changeToCoral();
+// Ao deletar um contato, a div ficará coral.
+}
+```
 
-### `npm run eject`
+### src/components/Profile.js
+Aqui você busca o método executado no momento anterior a completa desmontagem, destruição, do componente. Qualquer limpeza pode ser realizada neste método, seja cancelar a chamada de uma API, limpar localStorage ou parar a atualização de algum timer. Não se deve utilizar o setState nesse método, uma vez que o componente será destruído e, portanto, não ocorrerá uma nova atualização de estado nesse componente.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+alert('Você ocultou seu perfil');
+```
+### src/components/Connections.js
+O método aqui é muito útil quando você não quer que a sua atualização de estado ou props gere uma nova renderização. Ele, portanto, é executado antes do método componentDidUpdate. O componentDidUpdate não será chamado se esse método retornar false. Recebe como parâmetros nextProps e nextState.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+const maxContactsNumber = 3;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+return list.length <= maxContactsNumber;
+// A quantidade de contatos não pode ser maior que 3, portanto se a lista é maior que 3, ele deverá retornar false e impedir a atualização.
+```
+#### Agora que você terminou a sua aplicação, você deve verificar que tudo está funcionando de acordo com o planejado. Para isso, selecionamos esta lista de celebridades do mundo da tecnologia que possuem um perfil no GitHub, para serem incluídos e incluídas na sua lista VIP de contatos:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Sandi Metz (skmetz) - Desenvolvedora de software e autora, especialista em código orientado a objetos em Ruby on Rails.
+* SAnders Hejlsberg (ahejlsberg) - Desenvolvedor do Delphi e Turbo Pascal.
+* SBrendan Gregg (brendangregg) - Engenheiro de núcleo e desempenho da Netflix.
+* SGuido van Rossum (gvanrossum) - Autor da linguagem de programação Python.
+* SYukihiro Matsumoto (matz) - Criador da linguagem de programação Ruby,
+* SBrendan Eich (BrendanEich) - Criador da linguagem de programação JavaScript.
+* SMarkus Persson (xNotch) - Fundador da Mojang Studios e criador do jogo Minecraft.
+* SNatalie Weizenbaum (nex3) - principal desenvolvedora e designer líder do Sass.
 
-## Learn More
+## Verifique:
+Os dados do seu perfil GitHub foram exibidos ao iniciar a aplicação?
+É possível exibir ou ocultar os dados do seu perfil?
+É possível adicionar um contato na sua lista de contatos?
+Ao adicionar o contato, o background mudou para um tom azulado?
+É possível excluir um contato na sua lista de contatos?
+Ao excluir o contato, o background mudou para um tom alaranjado?
+O contador de contatos funciona perfeitamente?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Se você respondeu SIM para todas as perguntas acima, você acabou de completar uma aplicação com todos os métodos comuns de ciclo de vida do React. Parabéns!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Nesse exercício, você construirá um componente em React que exibirá os dados pessoais de usuários entregues por uma api.
+A api utilizada será a randomuser no endereço https://api.randomuser.me/ que, ao ser acessada, entrega um objeto contendo um usuário aleatório e seus dados pessoais num array de nome results . Exemplo:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "mr",
+        "first": "brad",
+        "last": "gibson"
+      },
+      "location": {
+        "street": "9278 new road",
+        "city": "kilcoole",
+        "state": "waterford",
+        "postcode": "93027",
+        "coordinates": {
+          "latitude": "20.9267",
+          "longitude": "-7.9310"
+        },
+        "timezone": {
+          "offset": "-3:30",
+          "description": "Newfoundland"
+        }
+      },
+      "email": "brad.gibson@example.com",
+      "login": {
+        "uuid": "155e77ee-ba6d-486f-95ce-0e0c0fb4b919",
+        "username": "silverswan131",
+        "password": "firewall",
+        "salt": "TQA1Gz7x",
+        "md5": "dc523cb313b63dfe5be2140b0c05b3bc",
+        "sha1": "7a4aa07d1bedcc6bcf4b7f8856643492c191540d",
+        "sha256": "74364e96174afa7d17ee52dd2c9c7a4651fe1254f471a78bda0190135dcd3480"
+      },
+      "dob": {
+        "date": "1993-07-20T09:44:18.674Z",
+        "age": 26
+      },
+      ...
+    }
+  ]
+}
+```
+* Ciente disto, após ser montado no DOM, o seu componente deve fazer uma requisição para a api randomuser . Utilize o método componentDidMount .
+*  Enquanto os dados não são entregues, deve ser renderizada uma div com o conteúdo loading...
+* Após a entrega dos dados, seu componente deve ser renderizado exibindo foto, nome, email e idade do usuário.
+* Caso a idade do usuário seja maior que 50, o componente NÃO deve ser renderizado. Aplique esta lógica no método shouldComponentUpdate .
